@@ -6,10 +6,11 @@ import { createClient } from '@/lib/supabase/client'
 import { cn } from '@/lib/utils'
 import {
   LayoutDashboard, Users, Calendar, Syringe, FileText,
-  LogOut, Heart, Menu, X, Settings, Bell
+  LogOut, Menu, X, Settings, Bell
 } from 'lucide-react'
 import { useState } from 'react'
 import { toast } from 'sonner'
+import Image from 'next/image'
 
 const navItems = [
   { href: '/dashboard', icon: LayoutDashboard, label: 'الرئيسية', exact: true, color: 'text-violet-300' },
@@ -49,16 +50,8 @@ export default function Sidebar({ userRole, userName }: SidebarProps) {
   const SidebarContent = () => (
     <div className="flex flex-col h-full">
       {/* Logo */}
-      <div className="px-4 py-3 shrink-0">
-        <div className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-xl bg-gradient-to-br from-pink-400 to-violet-500 flex items-center justify-center shrink-0">
-            <Heart className="w-4 h-4 text-white" fill="white" />
-          </div>
-          <div>
-            <p className="font-extrabold text-white text-sm leading-none tracking-tight">Kidz Care</p>
-            <p className="text-slate-400 text-xs mt-0.5">عيادة د. بولا</p>
-          </div>
-        </div>
+      <div className="px-3 py-3 shrink-0 flex items-center justify-center">
+        <Image src="/logo.png" alt="Dr. Bola Pediatric Clinic" width={220} height={120} style={{ objectFit: 'contain', height: '120px', width: '100%' }} priority />
       </div>
 
       {/* Nav */}
@@ -128,11 +121,8 @@ export default function Sidebar({ userRole, userName }: SidebarProps) {
         <button onClick={() => setMobileOpen(true)} className="text-slate-400 hover:text-white p-1 transition-colors">
           <Menu className="w-6 h-6" />
         </button>
-        <div className="flex items-center gap-2">
-          <span className="text-white font-bold text-sm">Kidz Care</span>
-          <div className="w-7 h-7 rounded-lg bg-gradient-to-br from-pink-400 to-violet-500 flex items-center justify-center">
-            <Heart className="w-4 h-4 text-white" fill="white" />
-          </div>
+        <div className="flex items-center justify-center">
+          <Image src="/logo.png" alt="Dr. Bola" width={120} height={40} style={{ objectFit: 'contain', height: '36px', width: 'auto' }} priority />
         </div>
       </div>
 

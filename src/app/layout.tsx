@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import { Cairo } from "next/font/google";
-import { Toaster } from "@/components/ui/sonner";
 import "./globals.css";
+import { ToasterClient } from "@/components/ui/toaster-client";
 
 const cairo = Cairo({
   variable: "--font-cairo",
@@ -29,7 +29,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       </head>
       <body className="min-h-full bg-background font-[family-name:var(--font-cairo)]">
         {children}
-        <Toaster richColors position="top-center" dir="rtl" />
+        <ToasterClient />
       </body>
     </html>
   );
