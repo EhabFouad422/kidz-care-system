@@ -33,7 +33,7 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
   const vaccPct = totalVaccines ? Math.round((givenVaccines / totalVaccines) * 100) : 0
 
   return (
-    <div className="space-y-5 max-w-4xl">
+    <div className="space-y-5 w-full">
       {/* Header */}
       <div className="flex items-start gap-3">
         <Link href="/dashboard/patients">
@@ -63,40 +63,40 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
       </div>
 
       {/* Quick Info Cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+      <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
         {patient.birth_weight_grams && (
-          <div className="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 rounded-2xl p-3.5 text-center">
-            <div className="w-8 h-8 rounded-xl bg-sky-100 flex items-center justify-center mx-auto mb-2">
-              <Weight className="w-4 h-4 text-sky-600" />
+          <div className="bg-gradient-to-br from-sky-50 to-blue-50 border border-sky-100 rounded-2xl p-5 text-center">
+            <div className="w-10 h-10 rounded-2xl bg-sky-100 flex items-center justify-center mx-auto mb-2.5">
+              <Weight className="w-5 h-5 text-sky-600" />
             </div>
             <p className="text-xs text-slate-500">وزن الولادة</p>
-            <p className="font-bold text-slate-800 text-sm mt-0.5">{patient.birth_weight_grams} جم</p>
+            <p className="font-bold text-slate-800 text-base mt-0.5">{patient.birth_weight_grams} جم</p>
           </div>
         )}
         {patient.birth_length_cm && (
-          <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 rounded-2xl p-3.5 text-center">
-            <div className="w-8 h-8 rounded-xl bg-emerald-100 flex items-center justify-center mx-auto mb-2">
-              <Ruler className="w-4 h-4 text-emerald-600" />
+          <div className="bg-gradient-to-br from-emerald-50 to-green-50 border border-emerald-100 rounded-2xl p-5 text-center">
+            <div className="w-10 h-10 rounded-2xl bg-emerald-100 flex items-center justify-center mx-auto mb-2.5">
+              <Ruler className="w-5 h-5 text-emerald-600" />
             </div>
             <p className="text-xs text-slate-500">الطول</p>
-            <p className="font-bold text-slate-800 text-sm mt-0.5">{patient.birth_length_cm} سم</p>
+            <p className="font-bold text-slate-800 text-base mt-0.5">{patient.birth_length_cm} سم</p>
           </div>
         )}
         {patient.birth_head_circumference_cm && (
-          <div className="bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-100 rounded-2xl p-3.5 text-center">
-            <div className="w-8 h-8 rounded-xl bg-violet-100 flex items-center justify-center mx-auto mb-2">
-              <Brain className="w-4 h-4 text-violet-600" />
+          <div className="bg-gradient-to-br from-violet-50 to-purple-50 border border-violet-100 rounded-2xl p-5 text-center">
+            <div className="w-10 h-10 rounded-2xl bg-violet-100 flex items-center justify-center mx-auto mb-2.5">
+              <Brain className="w-5 h-5 text-violet-600" />
             </div>
             <p className="text-xs text-slate-500">محيط الرأس</p>
-            <p className="font-bold text-slate-800 text-sm mt-0.5">{patient.birth_head_circumference_cm} سم</p>
+            <p className="font-bold text-slate-800 text-base mt-0.5">{patient.birth_head_circumference_cm} سم</p>
           </div>
         )}
-        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-2xl p-3.5 text-center">
-          <div className="w-8 h-8 rounded-xl bg-amber-100 flex items-center justify-center mx-auto mb-2">
-            <Syringe className="w-4 h-4 text-amber-600" />
+        <div className="bg-gradient-to-br from-amber-50 to-orange-50 border border-amber-100 rounded-2xl p-5 text-center">
+          <div className="w-10 h-10 rounded-2xl bg-amber-100 flex items-center justify-center mx-auto mb-2.5">
+            <Syringe className="w-5 h-5 text-amber-600" />
           </div>
           <p className="text-xs text-slate-500">التطعيمات</p>
-          <p className="font-bold text-slate-800 text-sm mt-0.5">{givenVaccines}/{totalVaccines}</p>
+          <p className="font-bold text-slate-800 text-base mt-0.5">{givenVaccines}/{totalVaccines}</p>
           <div className="mt-1.5 h-1.5 bg-amber-100 rounded-full overflow-hidden">
             <div className="h-full bg-amber-400 rounded-full" style={{ width: `${vaccPct}%` }} />
           </div>
