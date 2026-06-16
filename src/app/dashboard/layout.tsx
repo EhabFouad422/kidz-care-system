@@ -21,7 +21,6 @@ export default async function DashboardLayout({ children }: { children: React.Re
     <div className="flex min-h-screen bg-slate-50">
       <Sidebar userRole={profile?.role} userName={profile?.full_name} />
       <main className="flex-1 flex flex-col min-w-0 pt-14 lg:pt-0">
-        {/* Top bar */}
         <div className="hidden lg:flex items-center justify-between px-6 py-3 bg-white border-b border-slate-100 sticky top-0 z-10 shadow-sm">
           <PatientSearch />
           <div className="text-xs text-slate-400 font-medium">
