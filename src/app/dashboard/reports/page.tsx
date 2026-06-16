@@ -358,19 +358,19 @@ export default function ReportsPage() {
 
       {/* Quick stats */}
       {stats && (
-        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
           {[
-            { label: 'المرضى', value: stats.totalP ?? 0, icon: Users, color: 'text-violet-600', bg: 'bg-violet-50' },
-            { label: 'الزيارات', value: stats.totalV ?? 0, icon: Calendar, color: 'text-emerald-600', bg: 'bg-emerald-50' },
-            { label: 'تطعيمات تمت', value: stats.givenVax ?? 0, icon: CheckCircle2, color: 'text-green-600', bg: 'bg-green-50' },
-            { label: 'تطعيمات معلقة', value: stats.pendingVax ?? 0, icon: Syringe, color: 'text-amber-600', bg: 'bg-amber-50' },
+            { label: 'المرضى',         value: stats.totalP ?? 0,    icon: Users,         color: 'text-violet-600', iconBg: 'bg-violet-100', gradient: 'from-violet-50 to-purple-50', border: 'border-violet-100' },
+            { label: 'الزيارات',       value: stats.totalV ?? 0,    icon: Calendar,      color: 'text-emerald-600', iconBg: 'bg-emerald-100', gradient: 'from-emerald-50 to-teal-50', border: 'border-emerald-100' },
+            { label: 'تطعيمات تمت',   value: stats.givenVax ?? 0,  icon: CheckCircle2,  color: 'text-green-600',   iconBg: 'bg-green-100',   gradient: 'from-green-50 to-emerald-50', border: 'border-green-100' },
+            { label: 'تطعيمات معلقة', value: stats.pendingVax ?? 0, icon: Syringe,       color: 'text-amber-600',   iconBg: 'bg-amber-100',   gradient: 'from-amber-50 to-orange-50', border: 'border-amber-100' },
           ].map(s => (
-            <div key={s.label} className="bg-white rounded-2xl border border-slate-100 p-4">
-              <div className={`w-9 h-9 ${s.bg} rounded-xl flex items-center justify-center mb-3`}>
-                <s.icon className={`w-4.5 h-4.5 ${s.color}`} />
+            <div key={s.label} className={`bg-gradient-to-br ${s.gradient} rounded-2xl border ${s.border} p-5 text-center`}>
+              <div className={`w-11 h-11 ${s.iconBg} rounded-2xl flex items-center justify-center mx-auto mb-3`}>
+                <s.icon className={`w-5 h-5 ${s.color}`} />
               </div>
-              <p className="text-2xl font-bold text-slate-800">{s.value.toLocaleString('ar-EG')}</p>
-              <p className="text-xs text-slate-400 mt-0.5">{s.label}</p>
+              <p className="text-3xl font-bold text-slate-800">{s.value.toLocaleString('en-US')}</p>
+              <p className="text-xs text-slate-500 mt-1 font-medium">{s.label}</p>
             </div>
           ))}
         </div>
