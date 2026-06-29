@@ -53,7 +53,7 @@ export default async function PatientsPage({
       {/* List */}
       {patients && patients.length > 0 ? (
         <div className="space-y-2">
-          {patients.map(p => (
+          {patients.map((p: any) => (
             <Link key={p.id} href={`/dashboard/patients/${p.id}`}>
               <div className="flex items-center gap-4 p-4 bg-white rounded-2xl border border-slate-100 hover:border-violet-200 transition-all cursor-pointer group">
                 <div className={`w-11 h-11 rounded-xl flex items-center justify-center text-white font-bold text-sm shrink-0 ${

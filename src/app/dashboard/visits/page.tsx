@@ -43,7 +43,7 @@ export default async function VisitsPage({
 
       {visits && visits.length > 0 ? (
         <div className="space-y-2">
-          {visits.map(v => (
+          {visits.map((v: any) => (
             <Link key={v.id} href={`/dashboard/patients/${v.patient_id}/visits/${v.id}`}>
               <Card className="hover:shadow-md transition-shadow cursor-pointer">
                 <CardContent className="p-4">

@@ -59,7 +59,7 @@ export default async function UsersPage() {
       </div>
 
       <div className="space-y-3">
-        {users?.map(u => (
+        {users?.map((u: any) => (
           <div
             key={u.id}
             className={`bg-white rounded-2xl border transition-all p-4 ${

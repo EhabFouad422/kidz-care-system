@@ -28,9 +28,10 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
 
   if (!patient) notFound()
 
-  const givenVaccines = vaccinations?.filter(v => v.status === 'given').length ?? 0
+  const givenVaccines = vaccinations?.filter((v: any) => v.status === 'given').length ?? 0
   const totalVaccines = vaccinations?.length ?? 0
   const vaccPct = totalVaccines ? Math.round((givenVaccines / totalVaccines) * 100) : 0
+
 
   return (
     <div className="space-y-5 w-full">
@@ -129,7 +130,7 @@ export default async function PatientDetailPage({ params }: { params: Promise<{ 
 
           {visits && visits.length > 0 ? (
             <div className="space-y-2.5">
-              {visits.map(visit => (
+              {visits.map((visit: any) => (
                 <Link key={visit.id} href={`/dashboard/patients/${id}/visits/${visit.id}`}>
                   <div className="bg-white rounded-2xl border border-slate-100 hover:border-violet-200 transition-all p-4 cursor-pointer group">
                     <div className="flex items-start justify-between gap-3">
