@@ -4,7 +4,10 @@ import { NextResponse, type NextRequest } from 'next/server'
 export async function proxy(request: NextRequest) {
   let supabaseResponse = NextResponse.next({ request })
 
-  if (process.env.NEXT_PUBLIC_USE_MOCK === 'true') {
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const isMock = process.env.NEXT_PUBLIC_USE_MOCK === 'true' || !url || url.includes('ycuqmajjzovzpuaohkdk') || url.includes('xxxx')
+
+  if (isMock) {
     const hasMockSession = request.cookies.has('sb-mock-session')
     const isAuthPage = request.nextUrl.pathname.startsWith('/login')
 
