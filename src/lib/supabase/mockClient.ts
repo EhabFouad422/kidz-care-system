@@ -81,6 +81,61 @@ export class MockQueryBuilder {
     return this
   }
 
+  or(expression: string) {
+    const terms = expression.split(',')
+    this.filters.push(item => {
+      return terms.some(term => {
+        const firstDot = term.indexOf('.')
+        if (firstDot === -1) return false
+        const fieldName = term.substring(0, firstDot).trim()
+        const rest = term.substring(firstDot + 1)
+        const secondDot = rest.indexOf('.')
+        if (secondDot === -1) return false
+        const op = rest.substring(0, secondDot).trim()
+        let val = rest.substring(secondDot + 1).trim()
+        
+        const itemVal = item[fieldName]
+        if (itemVal === undefined || itemVal === null) return false
+        
+        const itemValStr = String(itemVal).toLowerCase()
+        
+        if (op === 'ilike' || op === 'like') {
+          let cleanVal = val
+          if (cleanVal.startsWith('%')) cleanVal = cleanVal.substring(1)
+          if (cleanVal.endsWith('%')) cleanVal = cleanVal.substring(0, cleanVal.length - 1)
+          cleanVal = cleanVal.toLowerCase()
+          return itemValStr.includes(cleanVal)
+        }
+        
+        if (op === 'eq') {
+          return itemValStr === val.toLowerCase()
+        }
+        
+        return false
+      })
+    })
+    return this
+  }
+
+  gte(field: string, value: any) {
+    this.filters.push(item => {
+      const itemVal = item[field]
+      if (itemVal === undefined || itemVal === null) return false
+      return itemVal >= value
+    })
+    return this
+  }
+
+  lte(field: string, value: any) {
+    this.filters.push(item => {
+      const itemVal = item[field]
+      if (itemVal === undefined || itemVal === null) return false
+      return itemVal <= value
+    })
+    return this
+  }
+
+
   order(field: string, options?: { ascending?: boolean }) {
     this.orderField = field
     this.orderAscending = options?.ascending ?? true
